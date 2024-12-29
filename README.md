@@ -1,16 +1,52 @@
-# accounting_of_books
+# Book Tracker App
 
-A new Flutter project.
+Это приложение для учета книг, которое позволяет пользователям добавлять книги, отслеживать их жанры, количество страниц и отображать статистику по жанрам.
 
-## Getting Started
+## Описание
 
-This project is a starting point for a Flutter application.
+Проект позволяет добавлять книги в приложение, указывая их жанр и количество страниц. Пользователи могут видеть статистику по жанрам в виде процентного распределения всех книг. Также можно пометить книги как "прочитанные", и они будут отображаться в отдельном разделе.
 
-A few resources to get you started if this is your first Flutter project:
+### Основные особенности:
+- Добавление новых книг с указанием жанра и количества страниц.
+- Отображение списка книг с кнопками для удаления и пометки как прочитанных.
+- Отображение статистики по жанрам с процентным распределением.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Технологии
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter**: основной фреймворк для разработки мобильного приложения.
+- **Dart**: язык программирования, используемый для разработки приложения.
+- **Material Design**: для создания красивого и современного интерфейса.
+
+## Установка
+
+Для того чтобы запустить это приложение на своем устройстве, выполните следующие шаги:
+
+1. Убедитесь, что у вас установлен **Flutter SDK**. Если нет, скачайте его с официального сайта: [flutter.dev](https://flutter.dev/docs/get-started/install).
+2. Клонируйте этот репозиторий:
+   ```bash
+   git clone https://github.com/wwwnnnnn04/book_tracking_app.git
+3. Перейдите в директорию проекта:
+   cd book-tracker-app
+4. Установите зависимости:
+   flutter pub get
+5. Запустите приложение:
+   flutter run
+
+Скриншоты
+
+![Скриншот 1](./assets/img/screenshot1.jpg)
+
+![Скриншот 2](./assets/img/screenshot2.jpg)
+
+![Скриншот 3](./assets/img/screenshot3.jpg)
+
+![Скриншот 4](./assets/img/screenshot4.jpg)
+
+![Скриншот 5](./assets/img/screenshot5.jpg)
+
+Как использовать
+
+1. Откройте приложение.
+2. Добавьте книги, указав их жанр и количество страниц.
+3. Используйте кнопки для пометки книги как прочитанной или для удаления.
+4. Посмотрите статистику по жанрам на главной странице приложения.
