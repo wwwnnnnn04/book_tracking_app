@@ -31,7 +31,9 @@ class _BooksReadState extends State<BooksRead> {
                 Text(
                   'Пока нет прочитанных книг',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 24),
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Theme.of(context).colorScheme.primary),
                 ),
                 Container(
                   height: constraint.maxHeight * 0.7,
@@ -46,8 +48,10 @@ class _BooksReadState extends State<BooksRead> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:
-                    Text('Прочитанные книги', style: TextStyle(fontSize: 20)),
+                child: Text('Прочитанные книги',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).colorScheme.primary)),
               ),
               Expanded(
                 child: ListView.builder(

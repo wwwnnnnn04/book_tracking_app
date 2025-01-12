@@ -40,7 +40,9 @@ class _Book_ListState extends State<Book_List> {
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       'Пока нет книг',
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
                   Container(

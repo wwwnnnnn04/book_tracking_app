@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '/widgets/chart.dart';
 import '/widgets/books_read.dart';
 import '/widgets/new_book.dart';
 import '/widgets/book_list.dart';
@@ -224,9 +223,11 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 22),
       ),
       trailing: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           GestureDetector(
             child: Icon(CupertinoIcons.book_fill),
@@ -273,13 +274,17 @@ class _HomePageState extends State<HomePage> {
             body: body,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterDocked,
-            floatingActionButton: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FloatingActionButton(
-                child: Icon(
-                  Icons.add,
+            floatingActionButton: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: FloatingActionButton(
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                  child: Icon(
+                    Icons.add,
+                  ),
+                  onPressed: () => modalAddBook(context),
                 ),
-                onPressed: () => modalAddBook(context),
               ),
             ),
           );
