@@ -18,23 +18,30 @@ class _BooksReadState extends State<BooksRead> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.readBook.length == 0
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                'Пока нет прочитанных книг',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24),
-              ),
-              FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Image.asset(
-                  'assets/img/book.png',
+    final media = MediaQuery.of(context);
+    final higthPlatform = media.size.height;
+    final topLine = media.padding.top;
+    final bottomView = media.viewInsets.bottom;
+    final orient = media.orientation == Orientation.landscape;
+    return widget.readBook.isEmpty
+        ? LayoutBuilder(builder: (context, constraint) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'Пока нет прочитанных книг',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 24),
                 ),
-              ),
-            ],
-          )
+                Container(
+                  height: constraint.maxHeight * 0.7,
+                  child: Image.asset(
+                    'assets/img/book.png',
+                  ),
+                ),
+              ],
+            );
+          })
         : Column(
             children: [
               Padding(

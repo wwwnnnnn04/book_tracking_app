@@ -28,32 +28,39 @@ class _NewBookState extends State<NewBook> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          TextField(
-            decoration: InputDecoration(labelText: 'Название книги'),
-            controller: titleCnt,
+    final media = MediaQuery.of(context);
+    final bottomView = media.viewInsets.bottom;
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(
+              top: 15, left: 15, right: 15, bottom: bottomView + 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextField(
+                decoration: InputDecoration(labelText: 'Название книги'),
+                controller: titleCnt,
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Жанр'),
+                controller: genreCnt,
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Количество страниц'),
+                keyboardType: TextInputType.number,
+                controller: numOfPageCnt,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 18),
+                child: ElevatedButton(
+                  onPressed: _submitData,
+                  child: Text('Добавить'),
+                ),
+              )
+            ],
           ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Жанр'),
-            controller: genreCnt,
-          ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Количество страниц'),
-            keyboardType: TextInputType.number,
-            controller: numOfPageCnt,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18),
-            child: ElevatedButton(
-              onPressed: _submitData,
-              child: Text('Добавить'),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

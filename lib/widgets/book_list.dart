@@ -31,30 +31,32 @@ class _Book_ListState extends State<Book_List> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.books.length == 0
-        ? Center(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    'Пока нет книг',
-                    style: TextStyle(fontSize: 24),
+    return widget.books.isEmpty
+        ? LayoutBuilder(builder: (context, constraints) {
+            return Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Пока нет книг',
+                      style: TextStyle(fontSize: 24),
+                    ),
                   ),
-                ),
-                Container(
-                  width: 80,
-                  child: Image.asset(
-                    'assets/img/waiting.png',
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ],
-            ),
-          )
+                  Container(
+                    height: constraints.maxHeight * 0.5,
+                    child: Image.asset(
+                      'assets/img/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              ),
+            );
+          })
         : Column(
             children: [
-              Chart(widget.books, widget.genre),
+              Flexible(flex: 1, child: Chart(widget.books, widget.genre)),
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {

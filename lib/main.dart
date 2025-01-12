@@ -1,15 +1,16 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
-import 'dart:ffi';
+import 'dart:io';
 
-import 'package:accounting_of_books/widgets/chart.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+import '/widgets/chart.dart';
 import '/widgets/books_read.dart';
 import '/widgets/new_book.dart';
 import '/widgets/book_list.dart';
 
 import '/models/Books.dart';
-import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -168,7 +169,6 @@ class _HomePageState extends State<HomePage> {
       books.add(newBook);
       genrePercentages = _genrePrc(books);
     });
-    print(genrePercentages);
   }
 
   void _deleteBook(String id) {
@@ -208,40 +208,80 @@ class _HomePageState extends State<HomePage> {
     'Хоррор'
   ];
 
+  bool switchVal = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Учет книг',
-          style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
-              fontSize: 22),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () => modalAddRead(context),
-              icon: Icon(Icons.auto_stories_outlined))
+    final media = MediaQuery.of(context);
+    final higthPlatform = media.size.height;
+
+    final topLine = media.padding.top;
+    final bottomView = media.viewInsets.bottom;
+    final orient = media.orientation == Orientation.landscape;
+
+    final appBarIOS = CupertinoNavigationBar(
+      middle: Text(
+        'Учет книг',
+        style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.bold,
+            fontSize: 22),
+      ),
+      trailing: Row(
+        children: [
+          GestureDetector(
+            child: Icon(CupertinoIcons.book_fill),
+            onTap: () => modalAddRead(context),
+          )
         ],
       ),
-      body: Column(children: [
+    );
+
+    final appBar = AppBar(
+      title: Text(
+        'Учет книг',
+        style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.bold,
+            fontSize: 22),
+      ),
+      centerTitle: true,
+      actions: [
+        IconButton(
+            onPressed: () => modalAddRead(context),
+            icon: Icon(Icons.auto_stories_outlined))
+      ],
+    );
+    final body = SafeArea(
+      child: Column(children: [
         Expanded(
-          child: Book_List(books, _deleteBook, readBook, genrePercentages),
+          child: Book_List(
+            books,
+            _deleteBook,
+            readBook,
+            genrePercentages,
+          ),
         ),
       ]),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
-          child: Icon(
-            Icons.add,
-          ),
-          onPressed: () => modalAddBook(context),
-        ),
-      ),
     );
+    return Platform.isIOS
+        ? CupertinoPageScaffold(
+            child: body,
+            navigationBar: appBarIOS,
+          )
+        : Scaffold(
+            appBar: appBar,
+            body: body,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterDocked,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.add,
+                ),
+                onPressed: () => modalAddBook(context),
+              ),
+            ),
+          );
   }
 }
