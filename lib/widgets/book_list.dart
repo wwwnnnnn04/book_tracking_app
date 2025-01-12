@@ -37,14 +37,15 @@ class _Book_ListState extends State<Book_List> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Пока нет книг',
-                      style: TextStyle(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SelectableText(
+                        'Пока нет книг',
+                        style: TextStyle(
                           fontSize: 24,
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                  ),
+                          color: Theme.of(context).colorScheme.primary,
+                          // decoration: TextDecoration.none,
+                        ),
+                      )),
                   Container(
                     height: constraints.maxHeight * 0.5,
                     child: Image.asset(

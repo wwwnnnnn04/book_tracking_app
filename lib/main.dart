@@ -226,6 +226,13 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).colorScheme.primary,
             fontSize: 22),
       ),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      border: Border(
+        bottom: BorderSide(
+          color: Colors.grey.withOpacity(0.5), // Добавляем разделительную линию
+          width: 0.5,
+        ),
+      ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -266,17 +273,29 @@ class _HomePageState extends State<HomePage> {
     );
     return Platform.isIOS
         ? CupertinoPageScaffold(
-            child: body,
             navigationBar: appBarIOS,
+            child: Stack(
+              children: [
+                body,
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CupertinoButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    child: Icon(CupertinoIcons.add),
+                    onPressed: () => modalAddBook(context),
+                  ),
+                ),
+              ],
+            ),
           )
         : Scaffold(
             appBar: appBar,
             body: body,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterDocked,
-            floatingActionButton: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
+            floatingActionButton: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: SafeArea(
                 child: FloatingActionButton(
                   backgroundColor:
                       Theme.of(context).colorScheme.primaryContainer,
