@@ -229,8 +229,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       border: Border(
         bottom: BorderSide(
-          color: Colors.grey.withOpacity(0.5), // Добавляем разделительную линию
-          width: 0.5,
+          color: Colors.red,
+          width: 1,
         ),
       ),
       trailing: Row(
@@ -279,10 +279,17 @@ class _HomePageState extends State<HomePage> {
                 body,
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: CupertinoButton(
-                    color: Theme.of(context).colorScheme.primary,
-                    child: Icon(CupertinoIcons.add),
-                    onPressed: () => modalAddBook(context),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 20.0), // Отступ от нижнего края
+                    child: CupertinoButton(
+                      color: Theme.of(context).colorScheme.primary,
+                      child: Icon(
+                        CupertinoIcons.add,
+                        color: Colors.white,
+                      ),
+                      onPressed: () => modalAddBook(context),
+                    ),
                   ),
                 ),
               ],

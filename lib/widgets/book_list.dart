@@ -45,6 +45,7 @@ class _Book_ListState extends State<Book_List> {
                           color: Theme.of(context).colorScheme.primary,
                           // decoration: TextDecoration.none,
                         ),
+                        enableInteractiveSelection: false,
                       )),
                   Container(
                     height: constraints.maxHeight * 0.5,
