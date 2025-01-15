@@ -149,8 +149,8 @@ class _HomePageState extends State<HomePage> {
             widthFactor: 1.0,
             child: GestureDetector(
               onTap: () {},
-              child: BooksRead(readBook),
               behavior: HitTestBehavior.opaque,
+              child: BooksRead(readBook),
             ),
           );
         });
@@ -210,13 +210,6 @@ class _HomePageState extends State<HomePage> {
   bool switchVal = false;
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
-    final higthPlatform = media.size.height;
-
-    final topLine = media.padding.top;
-    final bottomView = media.viewInsets.bottom;
-    final orient = media.orientation == Orientation.landscape;
-
     final appBarIOS = CupertinoNavigationBar(
       middle: Text(
         'Учет книг',
@@ -245,7 +238,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     final appBar = AppBar(
-      title: Text(
+      title: const Text(
         'Учет книг',
         style: TextStyle(
             fontFamily: 'Montserrat',
@@ -256,7 +249,7 @@ class _HomePageState extends State<HomePage> {
       actions: [
         IconButton(
             onPressed: () => modalAddRead(context),
-            icon: Icon(Icons.auto_stories_outlined))
+            icon: const Icon(Icons.auto_stories_outlined))
       ],
     );
     final body = SafeArea(
@@ -280,8 +273,7 @@ class _HomePageState extends State<HomePage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: 20.0), // Отступ от нижнего края
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: CupertinoButton(
                       color: Theme.of(context).colorScheme.primary,
                       child: Icon(
@@ -301,12 +293,12 @@ class _HomePageState extends State<HomePage> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterDocked,
             floatingActionButton: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: SafeArea(
                 child: FloatingActionButton(
                   backgroundColor:
                       Theme.of(context).colorScheme.primaryContainer,
-                  child: Icon(
+                  child: const Icon(
                     Icons.add,
                   ),
                   onPressed: () => modalAddBook(context),

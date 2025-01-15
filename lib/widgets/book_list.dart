@@ -37,16 +37,19 @@ class _Book_ListState extends State<Book_List> {
               child: Column(
                 children: [
                   Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SelectableText(
+                    padding: const EdgeInsets.all(10.0),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Text(
                         'Пока нет книг',
                         style: TextStyle(
                           fontSize: 24,
                           color: Theme.of(context).colorScheme.primary,
-                          // decoration: TextDecoration.none,
+                          decoration: TextDecoration.none,
                         ),
-                        enableInteractiveSelection: false,
-                      )),
+                      ),
+                    ),
+                  ),
                   Container(
                     height: constraints.maxHeight * 0.5,
                     child: Image.asset(
@@ -86,11 +89,11 @@ class _Book_ListState extends State<Book_List> {
                               IconButton(
                                   onPressed: () =>
                                       _addReadBook(widget.books[index]),
-                                  icon: Icon(Icons.auto_stories_rounded)),
+                                  icon: const Icon(Icons.auto_stories_rounded)),
                               IconButton(
                                   onPressed: () =>
                                       widget.deleteBook(widget.books[index].id),
-                                  icon: Icon(Icons.delete)),
+                                  icon: const Icon(Icons.delete)),
                             ],
                           )),
                     );

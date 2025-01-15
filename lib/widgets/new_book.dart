@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
 class NewBook extends StatefulWidget {
@@ -39,15 +37,16 @@ class _NewBookState extends State<NewBook> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextField(
-                decoration: InputDecoration(labelText: 'Название книги'),
+                decoration: const InputDecoration(labelText: 'Название книги'),
                 controller: titleCnt,
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Жанр'),
+                decoration: const InputDecoration(labelText: 'Жанр'),
                 controller: genreCnt,
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Количество страниц'),
+                decoration:
+                    const InputDecoration(labelText: 'Количество страниц'),
                 keyboardType: TextInputType.number,
                 controller: numOfPageCnt,
               ),
@@ -55,7 +54,7 @@ class _NewBookState extends State<NewBook> {
                 padding: const EdgeInsets.symmetric(vertical: 18),
                 child: ElevatedButton(
                   onPressed: _submitData,
-                  child: Text('Добавить'),
+                  child: const Text('Добавить'),
                 ),
               )
             ],

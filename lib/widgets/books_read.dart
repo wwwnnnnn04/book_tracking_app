@@ -18,11 +18,6 @@ class _BooksReadState extends State<BooksRead> {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
-    final higthPlatform = media.size.height;
-    final topLine = media.padding.top;
-    final bottomView = media.viewInsets.bottom;
-    final orient = media.orientation == Orientation.landscape;
     return widget.readBook.isEmpty
         ? LayoutBuilder(builder: (context, constraint) {
             return Column(
@@ -78,7 +73,7 @@ class _BooksReadState extends State<BooksRead> {
                               IconButton(
                                   onPressed: () =>
                                       _deleteBook(widget.readBook[index].id),
-                                  icon: Icon(Icons.delete)),
+                                  icon: const Icon(Icons.delete)),
                             ],
                           )),
                     );
