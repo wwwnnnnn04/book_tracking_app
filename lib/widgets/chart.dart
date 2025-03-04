@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
-import '../models/Books.dart';
+import '../models/books.dart';
 
 class Chart extends StatefulWidget {
   final List<Books> books;
@@ -35,7 +33,7 @@ class _ChartState extends State<Chart> {
             Container(
               width: 200,
               height: 10,
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Theme.of(context).colorScheme.surface,
@@ -64,7 +62,7 @@ class _ChartState extends State<Chart> {
         final containerHeight =
             orient ? constraints.maxHeight * 0.7 : constraints.maxHeight * 0.5;
 
-        return Container(
+        return SizedBox(
           height: containerHeight,
           child: Card(
             elevation: 8,

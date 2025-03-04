@@ -1,4 +1,4 @@
-import '/models/Books.dart';
+import '../models/books.dart';
 import 'package:flutter/material.dart';
 
 class BooksRead extends StatefulWidget {
@@ -30,7 +30,7 @@ class _BooksReadState extends State<BooksRead> {
                       fontSize: 24,
                       color: Theme.of(context).colorScheme.primary),
                 ),
-                Container(
+                SizedBox(
                   height: constraint.maxHeight * 0.7,
                   child: Image.asset(
                     'assets/img/book.png',

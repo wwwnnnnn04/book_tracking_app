@@ -1,23 +1,21 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
-
 import '/widgets/chart.dart';
 import 'package:flutter/material.dart';
 
-import '../models/Books.dart';
+import '../models/books.dart';
 
-class Book_List extends StatefulWidget {
+class BookList extends StatefulWidget {
   final List<Books> books;
   final Function(String) deleteBook;
   final List<Books> readBook;
   final Map<String, double> genre;
 
-  Book_List(this.books, this.deleteBook, this.readBook, this.genre);
+  BookList(this.books, this.deleteBook, this.readBook, this.genre);
 
   @override
-  State<Book_List> createState() => _Book_ListState();
+  State<BookList> createState() => _BookListState();
 }
 
-class _Book_ListState extends State<Book_List> {
+class _BookListState extends State<BookList> {
   void _addReadBook(Books book) {
     for (int i = 0; i < widget.readBook.length; i++) {
       if (widget.readBook[i].id == book.id) {
